@@ -1,0 +1,80 @@
+##########################################################################################################################
+#
+#	Results for the comparison of the modules SYS.1.1 Allgemeiner Server of the years 2022 and 2021
+#	This list indicates where differences between requirements were made.
+#	It also shows which requirements were added and which were removed.
+#
+##########################################################################################################################
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ CHANGED REQUIREMENTS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+RESULT:
+  Requirement 12,
+  Title Similarity: 100%,
+  Text Similarity: 93%
+
+######## Requirement 2022 ########
+
+SYS.1.1.A12 Planung des Server-Einsatzes (S)
+Jedes Server-System SOLLTE geeignet geplant werden. Dabei SOLLTEN mindestens folgende Punkte berücksichtigt 
+werden: • Auswahl der Hardwareplattform, des Betriebssystems und der Anwendungssoftware, • Dimensionierung 
+der Hardware (Leistung, Speicher, Bandbreite etc.), • Art und Anzahl der Kommunikationsschnittstellen, 
+• Leistungsaufnahme, Wärmelast, Platzbedarf und Bauform, • administrative Zugänge (siehe SYS.1.1.A5 Schutz 
+von Schnittstellen), • Zugriffe von Benutzern, • Protokollierung (siehe SYS.1.1.A10 Protokollierung), • 
+Aktualisierung von Betriebssystem und Anwendungen sowie • Einbindung ins System- und Netzmanagement, 
+in die Datensicherung und die Schutzsysteme (Virenschutz, IDS etc.). Alle Entscheidungen, die 
+in der Planungsphase getroffen wurden, SOLLTEN so dokumentiert werden, dass sie zu 
+einem späteren Zeitpunkt nachvollzogen werden können.
+
+######## Requirement 2021 ########
+
+SYS.1.1.A12 Planung des Server-Einsatzes (S)
+Jedes Server-System SOLLTE geeignet geplant werden. Dabei SOLLTEN mindestens folgende Punkte berücksichtigt 
+werden: • Auswahl der Hardwareplattform, des Betriebssystems und der Anwendungssoftware, • Dimensionierung 
+der Hardware (Leistung, Speicher, Bandbreite etc.), • Art und Anzahl der Kommunikationsschnittstellen, 
+• Leistungsaufnahme, Wärmelast, Platzbedarf und Bauform, • Realisierung administrativer Zugänge (siehe SYS.1.1.A5 
+Schutz der Administrationsschnittstellen), • Zugriffe von Benutzern, • Realisierung der Protokollierung (siehe 
+SYS.1.1.A10 Protokollierung), • Realisierung der Systemaktualisierung (siehe SYS.1.1.A7 Updates und Patches für 
+Betriebssystem und Anwendungen) sowie • Einbindung ins System- und Netzmanagement, in die 
+Datensicherung und die Schutzsysteme (Virenschutz, IDS etc.). Alle Entscheidungen, die in der 
+Planungsphase getroffen wurden, SOLLTEN so dokumentiert werden, dass sie zu einem späteren 
+Zeitpunkt nachvollzogen werden können.
+
+-------------------------------------------------------------------------------------------------------------------------
+
+RESULT:
+  Requirement 31,
+  Title Similarity: 57%,
+  Text Similarity: 58%
+
+######## Requirement 2022 ########
+
+SYS.1.1.A31 Einsatz von Ausführungskontrolle (H)
+Es SOLLTE über eine Ausführungskontrolle sichergestellt werden, dass nur explizit erlaubte Programme 
+und Skripte ausgeführt werden können. Die Regeln SOLLTEN so eng wie möglich 
+gefasst werden. Falls Pfade und Hashes nicht explizit angegeben werden können, SOLLTEN 
+alternativ auch zertifikatsbasierte oder Pfad-Regeln genutzt werden.
+
+######## Requirement 2021 ########
+
+SYS.1.1.A31 Application Whitelisting (H)
+Es SOLLTE bei erhöhtem Schutzbedarf über Application Whitelisting sichergestellt werden, dass nur 
+erlaubte Programme ausgeführt werden. Zum einen SOLLTEN vollständige Pfade bzw. Verzeichnisse festgelegt 
+werden, aus denen diese Programme ausgeführt werden dürfen. Zum anderen SOLLTE alternativ 
+einzelnen Anwendungen explizit die Ausführung gestattet werden.
+
+-------------------------------------------------------------------------------------------------------------------------
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ADDITIONAL REQUIREMENTS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+SYS.1.1.A37 Kapselung von sicherheitskritischen Anwendungen und Betriebssystemkomponenten (S)
+Um sowohl den Zugriff eines Angreifers auf das Betriebssystem oder andere Anwendungen 
+als auch den Zugriff vom Betriebssystem auf besonders schützenswerte Dateien zu verhindern, 
+SOLLTEN Anwendungen und Betriebssystemkomponenten (wie beispielsweise Authentisierung oder Zertifikatsüberprüfung) ihrem Schutzbedarf entsprechend 
+besonders gekapselt bzw. anderen Anwendungen und Betriebssystemkomponenten gegenüber isoliert werden. Dabei SOLLTEN 
+insbesondere sicherheitskritische Anwendungen berücksichtigt werden, die mit Daten aus unsicheren Quellen arbeiten 
+(z.B. Webbrowser und Bürokommunikations-Anwendungen).
+
+SYS.1.1.A38 Härtung des Host-Systems mittels Read-Only-Dateisystem (H)
+Die Integrität des Host-Systems sollte durch ein Read-Only-Dateisystem sichergestellt werden (Immutable OS).
+
