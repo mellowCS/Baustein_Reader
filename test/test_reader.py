@@ -194,8 +194,13 @@ class ReaderTests(unittest.TestCase):
         ''' Tests that the document title is correctly extracted from the filename.'''
 
         self.assertEqual(
-            reader.get_document_title('SYS_1_1_Allgemeiner_Server_Edition_2022.pdf'),
-            'SYS.1.1 Allgemeiner Server',
+            reader.get_document_title(
+                'SYS.3.2: Tablet und Smartphone\r\n'
+                'SYS.3.2.2: Mobile Device \r\n'
+                'Management (MDM)\r\n'
+                '1 Beschreibung'
+            ),
+            'SYS.3.2.2 Mobile Device Management (MDM)',
         )
 
     def test_get_text_from_file(self):

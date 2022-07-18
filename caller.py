@@ -53,15 +53,17 @@ def main() -> None:
 
     args = parse_args()
 
-    doc_title = reader.get_document_title(str(args.file_old).rsplit('/')[1])
-
+    old_text = reader.get_text_from_file(args.file_old)
     requirements_old = reader.get_requirements(
-        reader.get_text_from_file(args.file_old),
-        doc_title
+        old_text,
+        reader.get_document_title(old_text)
     )
+
+    new_text = reader.get_text_from_file(args.file_new)
+    new_doct_title = reader.get_document_title(new_text)
     requirements_new = reader.get_requirements(
-        reader.get_text_from_file(args.file_new),
-        doc_title
+        new_text,
+        new_doct_title,
     )
 
     additional_requirements: dict[int, Tuple[str, str]] = {}
@@ -78,7 +80,7 @@ def main() -> None:
     results = comparer.compare_modules(sorted_requirements_old, sorted_requirements_new)
 
     writer.write_results_to_file(
-        doc_title,
+        new_doct_title,
         results,
         sorted_requirements_old,
         sorted_requirements_new,

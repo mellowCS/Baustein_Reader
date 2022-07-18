@@ -40,10 +40,9 @@ REQUIREMENT_CHAPTERS = {
 # Matches the chapter title after requirements with the highest security assessment.
 INFORMATION_CHAPTER_PATTERN = r'4(?:\.)? Weiterführende Informationen'
 
-# Is used to parse the document title from the filename.
-# e.g. SYS_1_1_Allgemeiner_Server -> SYS.1.1 Allgemeiner Server
-SUB_UNDERSCORE_FOR_SPACE_PATTERN = r'(?<=\w)(?:\_)(?=[A-Za-z])'
-SUB_UNDERSCORE_FOR_DOT_PATTERN = r'(?<=\w)(?:\_)(?=\d)'
+# Matches the title of the document.
+DOCUMENT_TITLE_PATTERN =\
+    r'[A-Z]{3,4}[\.\d]+\:? (?:[\w\-\,\(\)\. ]*(?:\r\n)){1,2}(?=1\.? Beschreibung)'
 
 # Matches all whitespace characters. Is used to normalize any given text.
 WHITESPACE_PATTERN = r'\s+'
@@ -185,12 +184,17 @@ def get_last_requirement_from_document(text: str, title: Match[str]):
     ]
 
 
-def get_document_title(filename: str) -> str:
+def get_document_title(file_text: str) -> str:
     ''' Extracts the document title from the filename. '''
 
-    doc_title = filename[:-17]
-    doc_title = re.sub(SUB_UNDERSCORE_FOR_SPACE_PATTERN, ' ', doc_title)
-    doc_title = re.sub(SUB_UNDERSCORE_FOR_DOT_PATTERN, '.', doc_title)
+    doc_title = re.sub(
+        WHITESPACE_PATTERN,
+        ' ',
+        re.search(DOCUMENT_TITLE_PATTERN, file_text, re.MULTILINE).group(0)).strip()
+
+    colon_index = doc_title.find(':')
+    if colon_index != -1:
+        doc_title = doc_title[:colon_index] + doc_title[colon_index+1:]
 
     return doc_title
 
